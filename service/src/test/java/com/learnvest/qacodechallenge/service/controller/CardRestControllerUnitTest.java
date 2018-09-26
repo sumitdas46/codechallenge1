@@ -199,7 +199,7 @@ public class CardRestControllerUnitTest {
      * {@link org.springframework.test.web.servlet.MockMvc} to mock the request and response cycle of a running application.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    @Ignore
+    //@Ignore
     @Test
     public void updateCard() throws Exception {
         // create a test card in the database
@@ -234,7 +234,7 @@ public class CardRestControllerUnitTest {
      * when a request to update a {@link Card} with a null {@link Card#id} value is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    @Ignore
+//    @Ignore
     @Test
     public void updateCardNull() throws Exception {
         RequestBuilder request = put(RequestMappingConstants.Service.CARD)
@@ -249,7 +249,7 @@ public class CardRestControllerUnitTest {
      * when a request to update a {@link Card} with a null {@link Card#id} value is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    @Ignore
+    //@Ignore
     @Test
     public void updateCardNullId() throws Exception {
         // generate a test card value with an id already defined
@@ -268,7 +268,7 @@ public class CardRestControllerUnitTest {
      * contains a value which exceeds the {@link CardDao#update} database configuration is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    @Ignore
+   // @Ignore
     @Test(expected = Exception.class)
     public void updateCardColumnTooLong() throws Exception {
         // create a test card via the DAO
@@ -293,7 +293,7 @@ public class CardRestControllerUnitTest {
      * {@link org.springframework.test.web.servlet.MockMvc} to mock the request and response cycle of a running application.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    @Ignore
+    //@Ignore
     @Test
     public void deleteCard() throws Exception {
         // create and verify test card in the database
@@ -320,7 +320,7 @@ public class CardRestControllerUnitTest {
      * when a request for a non-existent {@link Card#id} is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    @Ignore
+    //@Ignore
     @Test
     public void deleteCardNonExistent() throws Exception {
         // create a random card id that will not be in our local database

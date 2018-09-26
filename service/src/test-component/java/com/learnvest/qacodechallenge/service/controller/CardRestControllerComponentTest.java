@@ -283,7 +283,7 @@ public class CardRestControllerComponentTest {
      * {@link CardRestController#update} endpoint is also functioning correctly.
      * @throws Exception within {@link com.fasterxml.jackson.databind.ObjectMapper}
      */
-    @Ignore
+    //@Ignore
     @Test
     public void updateCard() throws Exception {
         // create a test card via the DAO
@@ -328,7 +328,7 @@ public class CardRestControllerComponentTest {
      * {@link ServiceErrorHandler} error handler.
      * @throws Exception within {@link com.fasterxml.jackson.databind.ObjectMapper}
      */
-    @Ignore
+   // @Ignore
     @Test
     public void updateCardColumnTooLong() throws Exception {
         // create a test card via the DAO
@@ -372,7 +372,7 @@ public class CardRestControllerComponentTest {
      * {@link ErrorSummary} when a request to update a null object is made.
      * @throws Exception within {@link com.fasterxml.jackson.databind.ObjectMapper}
      */
-    @Ignore
+   // @Ignore
     @Test
     public void updateCardNull() throws Exception {
         Card nullCard = null;
@@ -408,7 +408,7 @@ public class CardRestControllerComponentTest {
      * when a request to update a {@link Card} with a null {@link Card#id} value is made.
      * @throws Exception within {@link com.fasterxml.jackson.databind.ObjectMapper}
      */
-    @Ignore
+   // @Ignore
     @Test
     public void updateCardNullId() throws Exception {
         // generate a test card value with an id already defined
@@ -434,7 +434,7 @@ public class CardRestControllerComponentTest {
      * functioning correctly.
      * @throws Exception within {@link com.fasterxml.jackson.databind.ObjectMapper}
      */
-    @Ignore
+   // @Ignore
     @Test
     public void deleteCard() throws Exception {
         // ensure that CardDao create is working correctly
@@ -463,7 +463,7 @@ public class CardRestControllerComponentTest {
      * when a request for a non-existent {@link Card#id} is made.
      * @throws Exception within {@link com.fasterxml.jackson.databind.ObjectMapper}
      */
-    @Ignore
+    //@Ignore
     @Test
     public void deleteCardNonExistent() throws Exception {
         // create a random card id that will not be in our local database

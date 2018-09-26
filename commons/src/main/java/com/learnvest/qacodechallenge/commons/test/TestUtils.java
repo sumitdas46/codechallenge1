@@ -20,6 +20,7 @@ public class TestUtils {
         card.setCardImage(getRandomByteArray());
         card.setCardImageMimeType(getRandomImageMimeType());
         card.setCardType(RandomStringUtils.randomAlphanumeric(20));
+        card.setCardDescription("This is test by Priyanka");
         return card;
     }
 

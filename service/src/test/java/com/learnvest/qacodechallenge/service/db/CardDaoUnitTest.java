@@ -112,7 +112,7 @@ public class CardDaoUnitTest {
     /**
      * Verify that {@link CardDao#update} is working correctly.
      */
-    @Ignore
+    //@Ignore
     @Test
     public void update() {
         Card createCard = TestUtils.cardWithTestValues();

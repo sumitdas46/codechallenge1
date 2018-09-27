@@ -81,10 +81,7 @@ public class CardRestController {
     @ApiOperation(value = "Delete a specific card by its id")
     @RequestMapping(value = "/{cardId}", method = RequestMethod.DELETE)
     public void delete(@PathVariable long cardId, @ApiIgnore HttpServletResponse response) {
-    	// TODO: If the requested {@link Card} is not found
-        // TODO: then return {@link HttpServletResponse} status of {@link HttpServletResponse#SC_NOT_FOUND}
-
-        Card card = cardDao.read(cardId);
+    	Card card = cardDao.read(cardId);
         if (card == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }else{

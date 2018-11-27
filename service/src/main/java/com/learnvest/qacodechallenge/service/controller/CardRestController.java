@@ -76,20 +76,15 @@ public class CardRestController {
      * @param cardId long value of {@link Card#id}
      * @param response {@link javax.servlet.http.HttpServletResponse}
      */
-    
-    //UPDATED
     @ApiOperation(value = "Delete a specific card by its id")
     @RequestMapping(value = "/{cardId}", method = RequestMethod.DELETE)
     public void delete(@PathVariable long cardId, @ApiIgnore HttpServletResponse response) {
-    	Card card = cardDao.read(cardId);
+        Card card = cardDao.read(cardId);
         if (card == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        }else{
-            cardDao.delete(cardId);
-            response.setStatus(HttpServletResponse.SC_OK);
+            return;
         }
-
-        
+        cardDao.delete(cardId);
     }
 
 }

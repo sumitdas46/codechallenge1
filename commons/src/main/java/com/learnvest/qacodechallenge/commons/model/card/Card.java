@@ -13,7 +13,7 @@ public class Card {
     private String cardImageMimeType;
     private String cardType;
     private String cardDescription;
-    
+
     public Long getId() {
         return id;
     }
@@ -61,9 +61,6 @@ public class Card {
     public void setCardType(String cardType) {
         this.cardType = cardType;
     }
-
-    
-    //Updated - Added new column in a table for card description//
     
     public String getCardDescription() {
         return cardDescription;
@@ -72,8 +69,8 @@ public class Card {
     public void setCardDescription(String cardDescription) {
         this.cardDescription = cardDescription;
     }
-    
-    
+
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Card)) {

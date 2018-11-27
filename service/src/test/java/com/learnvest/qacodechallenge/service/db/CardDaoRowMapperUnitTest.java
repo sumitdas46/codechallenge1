@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.learnvest.qacodechallenge.commons.model.card.Card;
 import com.learnvest.qacodechallenge.commons.sql.SqlStatementsFileLoader;
 import com.learnvest.qacodechallenge.commons.test.TestUtils;
-import com.learnvest.qacodechallenge.service.config.UnitTestConfig;
+import com.learnvest.qacodechallenge.service.UnitTestConfig;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

@@ -1,5 +1,6 @@
 package com.learnvest.qacodechallenge.service.controller;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,8 +28,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learnvest.qacodechallenge.commons.constants.RequestMappingConstants;
 import com.learnvest.qacodechallenge.commons.model.card.Card;
 import com.learnvest.qacodechallenge.commons.test.TestUtils;
-import com.learnvest.qacodechallenge.service.config.UnitTestConfig;
-import com.learnvest.qacodechallenge.service.config.WebMvcTestConfig;
+import com.learnvest.qacodechallenge.service.UnitTestConfig;
+import com.learnvest.qacodechallenge.service.WebMvcTestConfig;
 import com.learnvest.qacodechallenge.service.db.CardDao;
 
 import static org.junit.Assert.assertEquals;
@@ -71,8 +72,9 @@ public class CardRestControllerUnitTest {
      * {@link org.springframework.test.web.servlet.MockMvc} to mock the request and response cycle of a running application.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
+    @Ignore
     @Test
-    public void createCard() throws Exception {
+    public void create() throws Exception {
         // generate a test card value
         Card createCard = TestUtils.cardWithTestValues();
         assertNull(createCard.getId());
@@ -103,8 +105,9 @@ public class CardRestControllerUnitTest {
      * {@link HttpServletResponse#SC_BAD_REQUEST} when a request to create a null object is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
+    @Ignore
     @Test
-    public void createCardUsingNull() throws Exception {
+    public void createUsingNull() throws Exception {
         // send the null card value as JSON to the create endpoint
         RequestBuilder request = post(RequestMappingConstants.Service.CARD)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -119,7 +122,7 @@ public class CardRestControllerUnitTest {
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
     @Test
-    public void createCardNonNullCardId() throws Exception {
+    public void createNonNullCardId() throws Exception {
         // generate a test card value with an id already defined
         Card createCard = TestUtils.cardWithTestValues();
         createCard.setId(new Random().longs(1L, Long.MAX_VALUE).findAny().getAsLong());
@@ -136,8 +139,9 @@ public class CardRestControllerUnitTest {
      * contains a value which exceeds the {@link CardDao#create} database configuration is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
+    @Ignore
     @Test(expected = Exception.class)
-    public void createCardColumnTooLong() throws Exception {
+    public void createColumnTooLong() throws Exception {
         // generate a test card value with a column that will exceed the database configuration
         Card createCard = TestUtils.cardWithTestValues();
         createCard.setCardName(RandomStringUtils.randomAlphabetic(2000));
@@ -153,8 +157,9 @@ public class CardRestControllerUnitTest {
      * {@link org.springframework.test.web.servlet.MockMvc} to mock the request and response cycle of a running application.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
+    @Ignore
     @Test
-    public void readCard() throws Exception {
+    public void read() throws Exception {
         // create a test card in the database
         Card testCard = TestUtils.cardWithTestValues();
         assertNull(testCard.getId());
@@ -183,8 +188,9 @@ public class CardRestControllerUnitTest {
      * when a request for a non-existent {@link Card#id} is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
+    @Ignore
     @Test
-    public void readCardNonExistent() throws Exception {
+    public void readNonExistent() throws Exception {
         // create a random card id that will not be in our local database
         Long id = new Random().longs(10000L, Long.MAX_VALUE).findAny().getAsLong();
 
@@ -199,9 +205,8 @@ public class CardRestControllerUnitTest {
      * {@link org.springframework.test.web.servlet.MockMvc} to mock the request and response cycle of a running application.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    //@Ignore
     @Test
-    public void updateCard() throws Exception {
+    public void update() throws Exception {
         // create a test card in the database
         Card createCard = TestUtils.cardWithTestValues();
         assertNull(createCard.getId());
@@ -223,10 +228,7 @@ public class CardRestControllerUnitTest {
         // map the update endpoint response to a new card object
         Card responseCard = mapper.readValue(response.getContentAsString(), Card.class);
 
-        // verify that the update endpoint performed as expected by comparing input and output values
-        assertNotNull(responseCard);
-        assertEquals(updateCard.getId(), responseCard.getId());
-        assertEquals(updateCard, responseCard);
+        // TODO: verify that the update endpoint performed as expected by comparing input and output values
     }
 
     /**
@@ -234,9 +236,8 @@ public class CardRestControllerUnitTest {
      * when a request to update a {@link Card} with a null {@link Card#id} value is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-//    @Ignore
     @Test
-    public void updateCardNull() throws Exception {
+    public void updateNull() throws Exception {
         RequestBuilder request = put(RequestMappingConstants.Service.CARD)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(null));
@@ -249,9 +250,8 @@ public class CardRestControllerUnitTest {
      * when a request to update a {@link Card} with a null {@link Card#id} value is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    //@Ignore
     @Test
-    public void updateCardNullId() throws Exception {
+    public void updateNullCardId() throws Exception {
         // generate a test card value with an id already defined
         Card updateCard = TestUtils.cardWithTestValues();
         updateCard.setId(null);
@@ -268,9 +268,8 @@ public class CardRestControllerUnitTest {
      * contains a value which exceeds the {@link CardDao#update} database configuration is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-   // @Ignore
     @Test(expected = Exception.class)
-    public void updateCardColumnTooLong() throws Exception {
+    public void updateColumnTooLong() throws Exception {
         // create a test card via the DAO
         Card testCard = TestUtils.cardWithTestValues();
         Long id = cardDao.create(testCard);
@@ -293,7 +292,6 @@ public class CardRestControllerUnitTest {
      * {@link org.springframework.test.web.servlet.MockMvc} to mock the request and response cycle of a running application.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    //@Ignore
     @Test
     public void deleteCard() throws Exception {
         // create and verify test card in the database
@@ -311,8 +309,7 @@ public class CardRestControllerUnitTest {
         MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
         assertEquals("HTTP State Code", HttpServletResponse.SC_OK, response.getStatus());
 
-        // verify that the card was deleted
-        assertNull(cardDao.read(id));
+        // TODO: verify that the card was deleted
     }
 
     /**
@@ -320,17 +317,16 @@ public class CardRestControllerUnitTest {
      * when a request for a non-existent {@link Card#id} is made.
      * @throws Exception via {@link org.springframework.test.web.servlet.MockMvc}
      */
-    //@Ignore
     @Test
-    public void deleteCardNonExistent() throws Exception {
+    public void deleteNonExistent() throws Exception {
         // create a random card id that will not be in our local database
         Long id = new Random().longs(10000L, Long.MAX_VALUE).findAny().getAsLong();
 
-        // ensure that the CardRestController delete endpoint is performing as expected
-        RequestBuilder request = delete(RequestMappingConstants.Service.CARD + "/" + id)
-                .contentType(MediaType.APPLICATION_JSON);
-        MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
-        assertEquals("HTTP State Code", HttpServletResponse.SC_NOT_FOUND, response.getStatus());
+        // TODO: ensure that the CardRestController delete endpoint is working correctly
+        //RequestBuilder request = delete()
+        //        .contentType(MediaType.APPLICATION_JSON);
+        //MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
+        //assertEquals("HTTP State Code", HttpServletResponse.SC_NOT_FOUND, response.getStatus());
     }
 
 }

@@ -468,14 +468,14 @@
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>test-component</id>
+                        <id>test-integration</id>
                         <phase>generate-test-sources</phase>
                         <goals>
                             <goal>add-test-source</goal>
                         </goals>
                         <configuration>
                             <sources>
-                                <source>src/test-component/java</source>
+                                <source>src/test-integration/java</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -512,7 +512,7 @@
             </build>
         </profile>
         <profile>
-            <id>test-component</id>
+            <id>test-integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -527,7 +527,7 @@
                         </dependencies>
                         <configuration>
                             <includes>
-                                <include>**/*ComponentTest.java</include>
+                                <include>**/*IntegrationTest.java</include>
                             </includes>
                         </configuration>
                     </plugin>

@@ -62,7 +62,7 @@ import static org.junit.Assert.assertNull;
 @TestPropertySource(locations="classpath:test.properties")
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
-public class CardRestControllerIntegrationTest {
+public class CardRestControllerComponentTest {
 
     @Configuration
     static class Config {

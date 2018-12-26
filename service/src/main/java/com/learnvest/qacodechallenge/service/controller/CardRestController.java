@@ -81,6 +81,7 @@ public class CardRestController {
     @ApiOperation(value = "Delete a specific card by its id")
     @RequestMapping(value = "/{cardId}", method = RequestMethod.DELETE)
     public void delete(@PathVariable long cardId, @ApiIgnore HttpServletResponse response) {
+    	
     	Card card = cardDao.read(cardId);
         if (card == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);

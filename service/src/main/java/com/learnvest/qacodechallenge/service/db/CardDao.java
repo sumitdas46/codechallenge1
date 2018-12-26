@@ -46,6 +46,8 @@ public class CardDao extends BaseDao<Card> {
      * @param id long
      * @return {@link Card}
      */
+   
+   
     @Override
     public Card read(long id) {
         LOG.trace("Reading card {}", id);
@@ -62,7 +64,8 @@ public class CardDao extends BaseDao<Card> {
      */
     @Override
     public void update(Card card) {
-        if (card == null) {
+        
+    	if (card == null) {
             throw new RuntimeException("Request to update a Card received null");
         } else if (card.getId() == null) {
             throw new RuntimeException("When updating a Card the id should not be null");

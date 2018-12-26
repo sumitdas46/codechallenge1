@@ -63,7 +63,7 @@ public class Card {
     }
 
     
-    //Updated - Added new column in a table for card description//
+    //Updated - Added new column in table for card description//
     
     public String getCardDescription() {
         return cardDescription;

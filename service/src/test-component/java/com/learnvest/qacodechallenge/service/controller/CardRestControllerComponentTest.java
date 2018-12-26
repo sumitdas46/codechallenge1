@@ -439,10 +439,10 @@ public class CardRestControllerComponentTest {
     public void deleteCard() throws Exception {
         // ensure that CardDao create is working correctly
         Card createCard = TestUtils.cardWithTestValues();
+        
         Long id = cardDao.create(createCard);
         assertNotNull(id);
         assertEquals(id, createCard.getId());
-
         // verify that the card was created
         Card verifyCreateCard = cardDao.read(id);
         assertEquals(createCard, verifyCreateCard);
@@ -478,3 +478,5 @@ public class CardRestControllerComponentTest {
     }
 
 }
+
+//updated

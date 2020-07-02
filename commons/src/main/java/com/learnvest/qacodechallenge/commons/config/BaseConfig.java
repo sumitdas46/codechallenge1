@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import com.learnvest.qacodechallenge.commons.sql.SqlStatementsFileLoader;
 import com.learnvest.qacodechallenge.commons.sql.SqlStatementsFileLoaderImpl;
 
+//Define the base Class
 public class BaseConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(BaseConfig.class);
